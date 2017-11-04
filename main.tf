@@ -59,11 +59,8 @@ resource "aws_iam_instance_profile" "emr_ec2_instance_profile" {
 # Security group resources
 #
 resource "aws_security_group" "emr_master" {
-  vpc_id = "${var.vpc_id}"
-
-  lifecycle {
-    ignore_changes = ["ingress", "egress"]
-  }
+  vpc_id                 = "${var.vpc_id}"
+  revoke_rules_on_delete = true
 
   tags {
     Name        = "sg${var.name}Master"
@@ -73,11 +70,8 @@ resource "aws_security_group" "emr_master" {
 }
 
 resource "aws_security_group" "emr_slave" {
-  vpc_id = "${var.vpc_id}"
-
-  lifecycle {
-    ignore_changes = ["ingress", "egress"]
-  }
+  vpc_id                 = "${var.vpc_id}"
+  revoke_rules_on_delete = true
 
   tags {
     Name        = "sg${var.name}Slave"
