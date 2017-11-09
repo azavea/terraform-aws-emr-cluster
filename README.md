@@ -14,7 +14,7 @@ module "emr" {
 
   name          = "DatarpocCluster"
   vpc_id        = "vpc-20f74844"
-  release_label = "emr-5.8.0"
+  release_label = "emr-5.9.0"
 
   applications = [
     "Hadoop",
@@ -32,7 +32,7 @@ module "emr" {
       name           = "MasterInstanceGroup"
       instance_role  = "MASTER"
       instance_type  = "m3.xlarge"
-      instance_count = 1
+      instance_count = "1"
     },
     {
       name           = "CoreInstanceGroup"
@@ -46,7 +46,7 @@ module "emr" {
   bootstrap_name = "runif"
   bootstrap_uri  = "s3://elasticmapreduce/bootstrap-actions/run-if"
   bootstrap_args = []
-  log_uri        = "s3://..."
+  log_uri        = "s3n://.../"
 
   project     = "Something"
   environment = "Staging"
@@ -66,7 +66,7 @@ module "emr" {
 - `bootstrap_name` - Name for the bootstrap action
 - `bootstrap_uri` - S3 URI for the bootstrap action script
 - `bootstrap_args` - A list of arguments to the bootstrap action script (default: `[]`)
-- `log_uri` - S3 URI of the EMR log destination
+- `log_uri` - S3 URI of the EMR log destination, must begin with `s3n://` and end with trailing slashes
 - `project` - Name of project this cluster is for (default: `Unknown`)
 - `environment` - Name of environment this cluster is targeting (default: `Unknown`)
 
