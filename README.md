@@ -1,5 +1,7 @@
 # terraform-aws-emr-cluster
 
+[![CircleCI](https://circleci.com/gh/azavea/terraform-aws-emr-cluster.svg?style=svg)](https://circleci.com/gh/azavea/terraform-aws-emr-cluster)
+
 A Terraform module to create an Amazon Web Services (AWS) Elastic MapReduce (EMR) cluster.
 
 ## Usage
